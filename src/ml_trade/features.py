@@ -77,8 +77,8 @@ def get_indicator_data(df):
     """
     +DM-> positive directional movement
     -DM-> negative directional movement
-    TR -> true raange
-    After calculating +DM, -DM and TR, the directionaal indicators are calculated using EMA.
+    TR -> true range
+    After calculating +DM, -DM and TR, the directional indicators are calculated using EMA.
     ADX is the smoothened average of the absolute difference between +DI and -DI
     """
     df['ADX5']=TA.ADX(df,5)
