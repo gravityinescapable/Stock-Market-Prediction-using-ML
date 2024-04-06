@@ -1,4 +1,4 @@
-# CS-357
+# CS-354
 This repository contains the code developed for the minor project made as part of the CS 354 Computational Intelligence Lab. The topic of the project is Automated Stock Market Trading using ML.
 
 ### Tech Stack Used 
