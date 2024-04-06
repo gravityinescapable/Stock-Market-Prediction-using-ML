@@ -1,5 +1,5 @@
 # CS-354
-This repository contains the code developed for the minor project made as part of the CS 354 Computational Intelligence Lab. The topic of the project is Automated Stock Market Trading using ML.
+This repository contains the code developed for the minor project made as part of the CS 354 Computational Intelligence Lab. The topic of the project is Automated Stock  Trading using ML.
 
 ### Tech Stack Used 
 1. Python: utilized for data preprocessing, feature generation, feature scaling, sentiment analysis, training and testing
