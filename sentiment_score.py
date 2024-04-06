@@ -5,9 +5,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 import nltk
+
+# Download NLTK data for sentiment analysis
 nltk.download('vader_lexicon')
 
-# Scraping data from a given URL
+# Function to scrape textual data from a given URL
 def scrape_text(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -19,7 +21,7 @@ def scrape_text(url):
 
     return text_data
 
-# Performing sentiment analysis 
+# Function to perform sentiment analysis 
 def analyze_sentiment(text):
     sia = SentimentIntensityAnalyzer()
     sentiment_score = sia.polarity_scores(text)['compound']
@@ -32,12 +34,43 @@ def analyze_sentiment(text):
     else:
         return 'neutral'
 
-# URLs for different indices of NIFTY 
+# Function to calculate parameters based on sentiment distribution
+def calculate_parameters(sentiment_distribution):
+    total_data_points = sum(sentiment_distribution.values())
+
+    # Calculate volume
+    volume = total_data_points/25
+
+    # Calculate alpha
+    positive_percentage = sentiment_distribution.get('positive', 0) / total_data_points
+    alpha = positive_percentage*10
+
+    # Calculate exponent
+    positive_count = sentiment_distribution.get('positive', 0)
+    negative_count = sentiment_distribution.get('negative', 0)
+    exponent = (abs(positive_count - negative_count) / total_data_points)*100
+
+    # Calculate confidence
+    neutral_percentage = sentiment_distribution.get('neutral', 0) / total_data_points
+    confidence = (1 - neutral_percentage)*10
+
+    return volume, alpha, exponent, confidence
+
+# Function to analyze sentiment distribution and calculate parameters
+def analyze_sentiment_and_calculate_parameters(sentiment_results):
+    # Calculate sentiment distribution
+    sentiment_distribution = {sentiment: sentiment_results.count(sentiment) for sentiment in sentiment_results}
+
+    # Calculate parameters based on sentiment distribution
+    volume, alpha, exponent, confidence = calculate_parameters(sentiment_distribution)
+
+    return volume, alpha, exponent, confidence
+
+
 urls = [
     'https://www.google.com/finance/quote/NIFTY_50:INDEXNSE',
-    ]
+]
 
-# Scrape textual data using each URL and perform sentiment analysis for each URL
 for url in urls:
     text_data = scrape_text(url)
 
@@ -47,6 +80,16 @@ for url in urls:
     for text in text_data:
         sentiment = analyze_sentiment(text)
         sentiment_results.append({'text': text, 'sentiment': sentiment})
+
+    # Analyze sentiment distribution and calculate parameters
+    volume, alpha, exponent, confidence = analyze_sentiment_and_calculate_parameters([result['sentiment'] for result in sentiment_results])
+
+    # Output calculated parameters
+    print("\nCalculated Parameters:")
+    print("Volume:", volume)
+    print("Alpha:", alpha)
+    print("Exponent:", exponent)
+    print("Confidence:", confidence)
 
     # Visualize the sentiment distribution
     sentiments, counts = np.unique([result['sentiment'] for result in sentiment_results], return_counts=True)
