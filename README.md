@@ -33,7 +33,7 @@ The codebase is organized into the following components:
 ### Initialisation
 - Clone this repository to your device
 - Install requirements.txt using 
--   `python -m pip install -r requirements.txt`
+   `python -m pip install -r requirements.txt`
 - On your terminal, run python app.py to start the flask app
 
 ### Contributors
