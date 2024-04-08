@@ -30,6 +30,12 @@ The codebase is organized into the following components:
 - `requirements.txt`: File containing all the necessary requirements for the repository
 - `sentiment_results_NIFTY_50_INDEXNSE.csv`: CSV file containing sentiment scores for NSE NIFTY 50 index data
 
+### Initialisation
+- Clone this repository to your device
+- Install requirements.txt using 
+   `python -m pip install -r requirements.txt`
+- On your terminal, run python app.py to start the flask app
+
 ### Contributors
 - Rishika Sharma (210002063)
 - Niranjana R Nair (210003049)

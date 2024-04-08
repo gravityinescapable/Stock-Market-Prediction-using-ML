@@ -71,16 +71,18 @@ def validation(data):
     explainer_rfc=shap.Explainer(rfc,input_train)
     shap_values_rfc=explainer_rfc.shap_values(input_test)  
 
+    
+
     # Plot the results
     shap.summary_plot(shap_values_rfc, input_test, max_display=10)
-
+   
     # Shapely Additive Explanation for Extra Trees Classifier
     explainer_xtc=shap.Explainer(xtc,input_train)
     shap_values_xtc=explainer_xtc.shap_values(input_test)  
 
     # Plot the results
     shap.summary_plot(shap_values_xtc, input_test, max_display=10)
-            
+     
     return rfc,xtc
 
        

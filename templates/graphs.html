@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs</title>
+    <style>
+        body {
+            background-color: #ADD8E6; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .graph {
+            width: 45%;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* White background color for individual graphs */
+            padding: 20px; /* Add padding for better visual appeal */
+        }
+
+        .graph img {
+            width: 100%; /* Make images fill the container */
+            max-width: 700px; /* Limit maximum width of images */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Ensure images don't have extra space below */
+            margin: 0 auto; /* Center images horizontally */
+        }
+    </style>
+</head>
+<body>
+    <h1>Results</h1>
+    <div class="container">
+        <div class="graph">
+            <h2>Profit and Loss (PnL) Plot for Random Forest</h2>
+            <img src="{{ url_for('static', filename='pnl_plot_1.png') }}" alt="PnL Plot RF">
+        </div>
+        <div class="graph">
+            <h2>Profit and Loss (PnL) Plot for Extra Trees</h2>
+            <img src="{{ url_for('static', filename='pnl_plot_2.png') }}" alt="PnL Plot XT">
+        </div>
+    </div>
+</body>
+</html>
+
+
