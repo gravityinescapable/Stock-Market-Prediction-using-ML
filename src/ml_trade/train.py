@@ -23,7 +23,6 @@ def validation(data):
     # Initialise the counter to 0
     i=0
 
-
     while True:
         
         # Partition the data into chunks of size partition_length
@@ -70,8 +69,6 @@ def validation(data):
     # Shapely Additive Explanation for Random Forest Classifier
     explainer_rfc=shap.Explainer(rfc,input_train)
     shap_values_rfc=explainer_rfc.shap_values(input_test)  
-
-    
 
     # Plot the results
     shap.summary_plot(shap_values_rfc, input_test, max_display=10)
