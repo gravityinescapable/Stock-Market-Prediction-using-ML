@@ -59,16 +59,20 @@ def train_and_evaluate():
 
     modelRF, modelXT = validation(data)
 
-    cumulative_return_RF = returns(modelRF, df_test, 100000, window=5, volume=40, confidence=0.5, exponent=2.4, alpha=0.5)*100
-    annualised_return_RF = cumulative_return_RF/252
+    cumulative_return_RF = returns(modelRF, df_test, 100000, window=5, volume=40, confidence=0.5, exponent=2.4, alpha=0.5)
+    annualised_return_RF = cumulative_return_RF**(252/1000)
+    cumulative_return_RF = (cumulative_return_RF-1) * 100
+    annualised_return_RF = (annualised_return_RF-1) * 100
     max_drawdown_RF = calculate_max_drawdown(df_test['pnl'])*100
     sharpe_ratio_RF = calculate_sharpe_ratio(df_test['pnl'], 0.15)  # 15% risk-free rate
     calmar_ratio_RF = calculate_calmar_ratio(df_test['pnl'])
     win_loss_ratio_RF = calculate_win_loss_ratio(df_test['pnl'])
     generate_pnl_plot_1(df_test, modelRF)
 
-    cumulative_return_XT = returns(modelXT, df_test, 100000, window=5, volume=40, confidence=0.5, exponent=2.4, alpha=0.5)*100
-    annualised_return_XT = cumulative_return_RF/252
+    cumulative_return_XT = returns(modelXT, df_test, 100000, window=5, volume=40, confidence=0.5, exponent=2.4, alpha=0.5)
+    annualised_return_XT = cumulative_return_XT**(252/1000)
+    cumulative_return_XT = (cumulative_return_XT-1) * 100
+    annualised_return_XT = (annualised_return_XT-1) * 100
     max_drawdown_XT = calculate_max_drawdown(df_test['pnl'])*100
     sharpe_ratio_XT = calculate_sharpe_ratio(df_test['pnl'], 0.15)
     calmar_ratio_XT = calculate_calmar_ratio(df_test['pnl'])
