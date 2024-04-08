@@ -37,17 +37,18 @@ The codebase is organized into the following components:
 - `sentiment_results_NIFTY_50_INDEXNSE.csv`: CSV file containing sentiment scores for NSE NIFTY 50 index data
 
 ### Initialisation
-- Set up a vitual environment
 # To install a virtual environment
 $ pip install venv
 # To create a new virtual environment
 $ python -m venv venv
 # To activate the vitual environment
 $ venv\Scripts\activate
--Clone this repository using
-- Install requirements.txt using 
+# Clone this repository using
+$ git clone https://github.com/gravityinescapable/Stock-Market-Prediction-using-ML
+# Install requirements.txt using 
 $ python -m pip install -r requirements.txt
-- On your terminal, run python app.py to start the flask app
+# To start the flask app run
+$ python app.py
 
 ### Contributors
 - Rishika Sharma (210002063)
