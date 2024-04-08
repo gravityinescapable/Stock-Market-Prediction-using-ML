@@ -25,6 +25,12 @@ The codebase is organized into the following components:
 - `pretrained_models/`: Directory containing the pre-trained models in pickle format
   - `rf_model.pickle`: Stores pre-trained model trained using random forest classifier
   - `xt_model.pickle`: Stores pre-trained model trained using extra trees classifier
+- `static/`: Directory containing the graphs and background image
+- `templates/`: Directory containing the html files for the frontend
+  - `index.html`: Homepage of the website
+  - `results.html`: Webpage to display the performance metrics
+  - `graphs.html`: Webpage to display the PnL(profit and loss) graphs over a period of 4 years
+- `app.py`: Flask app for the backend functionalities 
 - `sentiment_score.py`: Python script for scraping and performing sentiment analysis on NSE NIFTY 50 index data obtained from Google finance
 - `parameters.py`: Python script for calculating trading strategy parameters based on sentiment scores and other factors
 - `requirements.txt`: File containing all the necessary requirements for the repository
